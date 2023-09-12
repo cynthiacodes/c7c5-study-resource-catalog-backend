@@ -20,6 +20,26 @@ app.get("/", async (_req, res) => {
     res.json({ msg: "Hello! There's nothing interesting for GET /" });
 });
 
+app.get("/users", async (_req, res) => {
+    try {
+        const response = await client.query("SELECT * FROM USERS");
+        res.status(200).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
+app.get("/resources", async (_req, res) => {
+    try {
+        const response = await client.query("SELECT * FROM RESOURCES");
+        res.status(200).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
 app.get("/health-check", async (_req, res) => {
     try {
         //For this to be successful, must connect to db
