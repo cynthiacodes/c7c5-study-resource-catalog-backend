@@ -115,7 +115,6 @@ SELECT * FROM OPINIONS;
 
 
 
-
 --To_Study Table:
 
 DROP TABLE
