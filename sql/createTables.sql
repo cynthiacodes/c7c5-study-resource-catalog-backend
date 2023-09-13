@@ -34,7 +34,8 @@ DROP TABLE IF EXISTS RESOURCES;
 
 CREATE TYPE STAGE AS ENUM  ('Foundation Week 0 - 3','React Week 1','React Week 2', 'React Week 3', 'Nodejs and Express Week', 'SQL and Persistence');
 CREATE TYPE OPINION AS ENUM  ('I recommend this resource after having used it',  'I do not recommend this resource, having used it','I haven''t used this resource but it looks promising');
-
+CREATE TYPE CATEGORIES AS ENUM('PostgreSQL','React', 'Frontend', 'Backend', 'TypeScript', 'JavaScript', 'GitHub', 'Express.js', 'CSS', 'HTML', 'Jest', 'CI/CD', 'Node.js');
+CREATE TYPE CONTENT AS ENUM('Video', 'Article', 'Ebook', 'Podcast', 'Exercise', 'Exercise set', 'Software tool', 'Course', 'Diagram', 'Cheat-sheet', 'Reference', 'Resource list', 'Youtube channel', 'Organisation');
 
 CREATE TABLE RESOURCES (
     resources_id serial PRIMARY KEY NOT NULL,
@@ -42,8 +43,8 @@ CREATE TABLE RESOURCES (
     author_name varchar(50) NOT NULL,
     url varchar(255) NOT NULL,
     description text NOT NULL,
-    tags text NOT NULL,
-    content_type text NOT NULL,
+    tags CATEGORIES,
+    content_type CONTENT,
     recommended_stage STAGE,
     date_created timestamp,
     user_id integer REFERENCES users(user_id), 
