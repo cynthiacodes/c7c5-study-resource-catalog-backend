@@ -40,6 +40,38 @@ app.get("/resources", async (_req, res) => {
     }
 });
 
+app.get("/opinions", async (_req, res) => {
+    try {
+        const response = await client.query("SELECT * FROM OPINIONS");
+        res.status(200).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
+app.post("/add-opinion", async (req, res) => {
+    try {
+        const { opinion_id, user_id, resource_id, comment, likes, dislikes } =
+            req.body;
+        const insertQuery =
+            "INSERT INTO OPINIONS(user_id, resource_id, comment, likes, dislikes) VALUES ($1, $2, $3, $4, $5) RETURNING * ";
+        const values = [
+            opinion_id,
+            user_id,
+            resource_id,
+            comment,
+            likes,
+            dislikes,
+        ];
+        const response = await client.query(insertQuery, values);
+
+        res.status(201).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
 app.get("/health-check", async (_req, res) => {
     try {
         //For this to be successful, must connect to db

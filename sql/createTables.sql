@@ -1,3 +1,5 @@
+--Users Table:
+
 DROP TABLE IF EXISTS USERS;
 
 CREATE TABLE  USERS(
@@ -5,8 +7,6 @@ CREATE TABLE  USERS(
     name       varchar(40) NOT NULL,
     is_faculty boolean NOT NULL default false
 );
-
-
 
 INSERT INTO USERS (name)
 VALUES
@@ -29,16 +29,21 @@ VALUES
     ('Tomasz'),
     ('Viki');
 
-DROP TABLE IF EXISTS RESOURCES;
 
+--Resources table:
 
 CREATE TYPE STAGE AS ENUM  ('Foundation Week 0 - 3','React Week 1','React Week 2', 'React Week 3', 'Nodejs and Express Week', 'SQL and Persistence');
 CREATE TYPE OPINION AS ENUM  ('I recommend this resource after having used it',  'I do not recommend this resource, having used it','I haven''t used this resource but it looks promising');
 CREATE TYPE CATEGORIES AS ENUM('PostgreSQL','React', 'Frontend', 'Backend', 'TypeScript', 'JavaScript', 'GitHub', 'Express.js', 'CSS', 'HTML', 'Jest', 'CI/CD', 'Node.js');
 CREATE TYPE CONTENT AS ENUM('Video', 'Article', 'Ebook', 'Podcast', 'Exercise', 'Exercise set', 'Software tool', 'Course', 'Diagram', 'Cheat-sheet', 'Reference', 'Resource list', 'Youtube channel', 'Organisation');
 
+
+DROP TABLE IF EXISTS RESOURCES;
+
+
+
 CREATE TABLE RESOURCES (
-    resources_id serial PRIMARY KEY NOT NULL,
+    resource_id serial PRIMARY KEY NOT NULL,
     resource_name varchar(100) NOT NULL,
     author_name varchar(50) NOT NULL,
     url varchar(255) NOT NULL,
@@ -46,7 +51,7 @@ CREATE TABLE RESOURCES (
     tags CATEGORIES,
     content_type CONTENT,
     recommended_stage STAGE,
-    date_created timestamp,
+    date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     user_id integer REFERENCES users(user_id), 
     creator_opinion OPINION,
     creator_reason text
@@ -61,7 +66,6 @@ INSERT INTO
     tags,
     content_type,
     recommended_stage,
-    date_created,
     user_id,
     creator_opinion,
     creator_reason
@@ -72,11 +76,68 @@ VALUES
     'John Doe',
     'https://example.com/react_intro',
     'A beginner-friendly introduction to React',
-    'React, Frontend, Web Development',
+    'React',
     'Course',
     'React Week 1',
-    '2023-09-10 10:00:00',
     1,
     'I recommend this resource after having used it',
     'Clear and concise content'
   );
+
+SELECT * FROM RESOURCES;
+SELECT * FROM RESOURCES INNER JOIN USERS ON USERS.user_id = RESOURCES.user_id;
+
+
+  --Opinions Table
+
+DROP TABLE IF EXISTS OPINIONS;
+
+CREATE TABLE OPINIONS (
+    opinion_id SERIAL PRIMARY KEY NOT NULL,
+    user_id INT REFERENCES USERS(user_id),
+    resource_id INT REFERENCES RESOURCES(resource_id),
+    comments TEXT NOT NULL,
+    likes INT,
+    dislikes INT,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP   
+);
+
+INSERT INTO OPINIONS (user_id, resource_id, comments, likes, dislikes)
+VALUES
+    (4, 1, 'This is a great resource!', 15, 2);
+
+
+SELECT * FROM OPINIONS;
+
+--To_Study Table:
+
+DROP TABLE
+  IF EXISTS TO_STUDY;
+
+CREATE TABLE
+  TO_STUDY(
+    study_item_id SERIAL PRIMARY KEY NOT NULL,
+    user_id INT REFERENCES USERS(user_id),
+    resource_id INT REFERENCES RESOURCES(resource_id)
+  );
+
+INSERT INTO
+  TO_STUDY (user_id, resource_id)
+VALUES
+  (6, 1);
+
+SELECT
+  TO_STUDY.study_item_id,
+  TO_STUDY.user_id,
+  TO_STUDY.resource_id,
+  RESOURCES.resource_name
+FROM
+  TO_STUDY
+  INNER JOIN RESOURCES ON TO_STUDY.resource_id = RESOURCES.resource_id;
+
+SELECT
+  TO_STUDY.*,
+  RESOURCES.*
+FROM
+  TO_STUDY
+  INNER JOIN RESOURCES ON TO_STUDY.resource_id = RESOURCES.resource_id;
