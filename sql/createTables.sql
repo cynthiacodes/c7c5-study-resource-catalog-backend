@@ -96,18 +96,25 @@ CREATE TABLE OPINIONS (
     opinion_id SERIAL PRIMARY KEY NOT NULL,
     user_id INT REFERENCES USERS(user_id),
     resource_id INT REFERENCES RESOURCES(resource_id),
-    comments TEXT NOT NULL,
-    likes INT,
-    dislikes INT,
+    comment TEXT NOT NULL,
+    likes INT DEFAULT 0 NOT NULL,
+    dislikes INT DEFAULT 0 NOT NULL,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP   
 );
 
-INSERT INTO OPINIONS (user_id, resource_id, comments, likes, dislikes)
+INSERT INTO OPINIONS (user_id, resource_id, comment)
+VALUES
+    (4, 1, 'Amazing!');
+
+INSERT INTO OPINIONS (user_id, resource_id, comment, likes, dislikes)
 VALUES
     (4, 1, 'This is a great resource!', 15, 2);
 
 
 SELECT * FROM OPINIONS;
+
+
+
 
 --To_Study Table:
 
@@ -134,6 +141,7 @@ SELECT
 FROM
   TO_STUDY
   INNER JOIN RESOURCES ON TO_STUDY.resource_id = RESOURCES.resource_id;
+
 
 SELECT
   TO_STUDY.*,
