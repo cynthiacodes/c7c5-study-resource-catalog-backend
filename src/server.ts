@@ -77,6 +77,32 @@ app.get("/health-check", async (_req, res) => {
     }
 });
 
+app.delete<{ id: string }>("/to-study/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const deleteQuery = "DELETE FROM TO_STUDY WHERE study_item_id = $1";
+        const values = [id];
+        await client.query(deleteQuery, values);
+        res.status(201).json(`study item ${id} has been deleted`);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
+app.delete<{ id: string }>("/resources/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const deleteQuery = "DELETE FROM RESOURCES WHERE resource_id = $1";
+        const values = [id];
+        await client.query(deleteQuery, values);
+        res.status(201).json(`resource ${id} has been deleted`);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
 connectToDBAndStartListening();
 
 async function connectToDBAndStartListening() {
