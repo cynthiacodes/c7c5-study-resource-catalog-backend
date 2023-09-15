@@ -10,3 +10,8 @@ export interface Resource {
     creator_opinion: string;
     creator_reason: string;
 }
+
+export interface Study {
+    user_id: number;
+    resource_id: number;
+}
