@@ -1,3 +1,5 @@
 http://localhost:4000/users
 
 http://localhost:4000/resources
+
+http://localhost:4000/opinions
