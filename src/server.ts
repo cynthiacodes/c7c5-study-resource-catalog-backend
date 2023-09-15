@@ -50,7 +50,7 @@ app.get("/opinions", async (_req, res) => {
     }
 });
 
-app.post("/add-opinion", async (req, res) => {
+app.post("/opinion", async (req, res) => {
     try {
         const { user_id, resource_id, comment, likes, dislikes } = req.body;
         const insertQuery =
