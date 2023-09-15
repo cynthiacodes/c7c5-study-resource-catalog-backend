@@ -4,6 +4,7 @@ import express from "express";
 import { Client } from "pg";
 import { getEnvVarOrFail } from "./support/envVarUtils";
 import { setupDBClientConfig } from "./support/setupDBClientConfig";
+import { Resource } from "./ResourceInterface";
 
 dotenv.config(); //Read .env file lines as though they were env vars.
 
@@ -34,6 +35,55 @@ app.get("/resources", async (_req, res) => {
     try {
         const response = await client.query("SELECT * FROM RESOURCES");
         res.status(200).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
+app.post<{}, {}, Resource>("/resources", async (req, res) => {
+    try {
+        const {
+            resource_name,
+            author_name,
+            url,
+            description,
+            tags,
+            content_type,
+            recommended_stage,
+            user_id,
+            creator_opinion,
+            creator_reason,
+        } = req.body;
+        const query =
+            "INSERT INTO RESOURCES (resource_name,author_name,url,description,tags,content_type,recommended_stage,user_id,creator_opinion,creator_reason) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *";
+        const values = [
+            resource_name,
+            author_name,
+            url,
+            description,
+            tags,
+            content_type,
+            recommended_stage,
+            user_id,
+            creator_opinion,
+            creator_reason,
+        ];
+        const newResource = await client.query(query, values);
+        res.status(201).json(newResource.rows[0]);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
+app.delete<{ id: string }>("/resources/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const deleteQuery = "DELETE FROM RESOURCES WHERE resource_id = $1";
+        const values = [id];
+        await client.query(deleteQuery, values);
+        res.status(201).json(`resource ${id} has been deleted`);
     } catch (error) {
         console.error(error);
         res.status(500).send("An error occurred. Check server logs.");
@@ -84,19 +134,6 @@ app.delete<{ id: string }>("/to-study/:id", async (req, res) => {
         const values = [id];
         await client.query(deleteQuery, values);
         res.status(201).json(`study item ${id} has been deleted`);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("An error occurred. Check server logs.");
-    }
-});
-
-app.delete<{ id: string }>("/resources/:id", async (req, res) => {
-    try {
-        const id = req.params.id;
-        const deleteQuery = "DELETE FROM RESOURCES WHERE resource_id = $1";
-        const values = [id];
-        await client.query(deleteQuery, values);
-        res.status(201).json(`resource ${id} has been deleted`);
     } catch (error) {
         console.error(error);
         res.status(500).send("An error occurred. Check server logs.");
