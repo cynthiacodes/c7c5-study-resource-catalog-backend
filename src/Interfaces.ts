@@ -15,3 +15,9 @@ export interface Study {
     user_id: number;
     resource_id: number;
 }
+
+export interface Opinion {
+    user_id: number;
+    resource_id: number;
+    comment: string;
+}
