@@ -25,6 +25,8 @@ CREATE TABLE RESOURCES (
     creator_reason text
 );
 
+ALTER TABLE RESOURCES ADD CONSTRAINT unique_url UNIQUE (url);
+
 INSERT INTO
   RESOURCES (
     resource_name,
