@@ -4,7 +4,7 @@ import express from "express";
 import { Client } from "pg";
 import { getEnvVarOrFail } from "./support/envVarUtils";
 import { setupDBClientConfig } from "./support/setupDBClientConfig";
-import { Resource, Study } from "./Interfaces";
+import { Opinion, Resource, Study } from "./Interfaces";
 
 dotenv.config(); //Read .env file lines as though they were env vars.
 
@@ -100,12 +100,12 @@ app.get("/opinions", async (_req, res) => {
     }
 });
 
-app.post("/opinions", async (req, res) => {
+app.post<{}, {}, Opinion>("/opinions", async (req, res) => {
     try {
-        const { user_id, resource_id, comment, likes, dislikes } = req.body;
+        const { user_id, resource_id, comment } = req.body;
         const insertQuery =
-            "INSERT INTO OPINIONS(user_id, resource_id, comment, likes, dislikes) VALUES ($1, $2, $3, $4, $5) RETURNING * ";
-        const values = [user_id, resource_id, comment, likes, dislikes];
+            "INSERT INTO OPINIONS(user_id, resource_id, comment) VALUES ($1, $2, $3) RETURNING * ";
+        const values = [user_id, resource_id, comment];
         const response = await client.query(insertQuery, values);
 
         res.status(201).json(response.rows);
