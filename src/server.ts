@@ -115,18 +115,6 @@ app.post("/opinions", async (req, res) => {
     }
 });
 
-app.get("/health-check", async (_req, res) => {
-    try {
-        //For this to be successful, must connect to db
-        await client.query("select now()");
-        res.status(200).send("system ok");
-    } catch (error) {
-        //Recover from error rather than letting system halt
-        console.error(error);
-        res.status(500).send("An error occurred. Check server logs.");
-    }
-});
-
 app.delete<{ id: string }>("/to-study/:id", async (req, res) => {
     try {
         const id = req.params.id;
@@ -135,6 +123,18 @@ app.delete<{ id: string }>("/to-study/:id", async (req, res) => {
         await client.query(deleteQuery, values);
         res.status(201).json(`study item ${id} has been deleted`);
     } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
+app.get("/health-check", async (_req, res) => {
+    try {
+        //For this to be successful, must connect to db
+        await client.query("select now()");
+        res.status(200).send("system ok");
+    } catch (error) {
+        //Recover from error rather than letting system halt
         console.error(error);
         res.status(500).send("An error occurred. Check server logs.");
     }
