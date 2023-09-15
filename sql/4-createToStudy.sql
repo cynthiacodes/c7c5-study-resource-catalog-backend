@@ -13,7 +13,7 @@ INSERT INTO
 VALUES
   (6, 1);
   
-  SELECT * from TO_STUDY;
+SELECT * FROM TO_STUDY;
 
 SELECT
   TO_STUDY.study_item_id,

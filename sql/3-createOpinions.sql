@@ -5,18 +5,19 @@ CREATE TABLE OPINIONS (
     user_id INT REFERENCES USERS(user_id),
     resource_id INT REFERENCES RESOURCES(resource_id),
     comment TEXT NOT NULL,
-    likes INT DEFAULT 0 NOT NULL,
-    dislikes INT DEFAULT 0 NOT NULL,
-    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP   
+    is_like BOOLEAN DEFAULT false,
+    is_dislike BOOLEAN DEFAULT false,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  	CHECK (NOT (is_like AND is_dislike))
 );
 
 INSERT INTO OPINIONS (user_id, resource_id, comment)
 VALUES
     (4, 1, 'Amazing!');
 
-INSERT INTO OPINIONS (user_id, resource_id, comment, likes, dislikes)
+INSERT INTO OPINIONS (user_id, resource_id, comment, is_like, is_dislike)
 VALUES
-    (4, 1, 'This is a great resource!', 15, 2);
+    (4, 1, 'This is a great resource!', true, false);
 
 
 SELECT * FROM OPINIONS;
