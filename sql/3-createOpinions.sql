@@ -21,3 +21,18 @@ VALUES
 
 
 SELECT * FROM OPINIONS;
+
+-- to dislike a resource
+UPDATE OPINIONS
+SET
+  is_like = CASE WHEN is_like THEN false ELSE is_like END,
+  is_dislike = NOT is_dislike
+WHERE user_id = 4 AND resource_id = 1;
+
+
+-- to like a resource
+UPDATE OPINIONS
+SET
+  is_dislike = CASE WHEN is_dislike THEN false ELSE is_dislike END,
+  is_like = NOT is_like
+WHERE user_id = 4 AND resource_id = 1;
