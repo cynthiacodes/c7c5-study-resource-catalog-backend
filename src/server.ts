@@ -115,6 +115,18 @@ app.post<{}, {}, Opinion>("/opinions", async (req, res) => {
     }
 });
 
+app.get<{ id: string }>("/to-study/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const query = "SELECT * FROM TO_STUDY WHERE user_id = $1";
+        const values = [id];
+        const response = await client.query(query, values);
+        res.status(200).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
 app.post<{}, {}, Study>("/to-study", async (req, res) => {
     try {
         const { user_id, resource_id } = req.body;
