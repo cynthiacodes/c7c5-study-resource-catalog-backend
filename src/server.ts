@@ -114,6 +114,40 @@ app.get("/opinions", async (_req, res) => {
     }
 });
 
+app.get<{ resourceId: string }>(
+    "/opinions/like/:resourceId",
+    async (req, res) => {
+        try {
+            const resourceId = req.params.resourceId;
+            const query =
+                "SELECT COUNT(*) FROM OPINIONS WHERE resource_id = $1 AND is_like = true";
+            const values = [resourceId];
+            const response = await client.query(query, values);
+            res.status(200).json(response.rows);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("An error occurred. Check server logs.");
+        }
+    }
+);
+
+app.get<{ resourceId: string }>(
+    "/opinions/dislike/:resourceId",
+    async (req, res) => {
+        try {
+            const resourceId = req.params.resourceId;
+            const query =
+                "SELECT COUNT(*) FROM OPINIONS WHERE resource_id = $1 AND is_dislike = true";
+            const values = [resourceId];
+            const response = await client.query(query, values);
+            res.status(200).json(response.rows);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("An error occurred. Check server logs.");
+        }
+    }
+);
+
 app.post<{}, {}, OpinionWithComment>("/opinions", async (req, res) => {
     try {
         const { user_id, resource_id, comment } = req.body;
