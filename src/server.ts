@@ -42,6 +42,18 @@ app.get("/resources", async (_req, res) => {
         res.status(500).send("An error occurred. Check server logs.");
     }
 });
+app.get<{ id: string }>("/resources/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const query = "SELECT * FROM RESOURCES WHERE resource_id = $1";
+        const values = [id];
+        const response = await client.query(query, values);
+        res.status(200).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
 
 app.post<{}, {}, Resource>("/resources", async (req, res) => {
     try {
