@@ -5,6 +5,7 @@ import { Client } from "pg";
 import { getEnvVarOrFail } from "./support/envVarUtils";
 import { setupDBClientConfig } from "./support/setupDBClientConfig";
 import { Opinion, Resource, Study } from "./Interfaces";
+import morgan from "morgan";
 
 dotenv.config(); //Read .env file lines as though they were env vars.
 
@@ -14,6 +15,7 @@ const client = new Client(dbClientConfig);
 //Configure express routes
 const app = express();
 
+app.use(morgan("dev"));
 app.use(express.json()); //add JSON body parser to each following route handler
 app.use(cors()); //add CORS support to each following route handler
 
