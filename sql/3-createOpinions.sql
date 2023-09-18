@@ -15,10 +15,15 @@ INSERT INTO OPINIONS (user_id, resource_id, comment)
 VALUES
     (4, 1, 'Amazing!');
 
+
 INSERT INTO OPINIONS (user_id, resource_id, comment, is_like, is_dislike)
 VALUES
-    (4, 1, 'This is a great resource!', true, false);
-
+    (4, 3, 'This is a great resource!', true, false),
+    (5, 6, 'Too time consuming', false, true),
+    (1, 8, 'straight to the point', true, false),
+    (1, 3, 'Worth reading', true, false),
+    (5, 6, 'Not great', false, true);
+    
 
 SELECT * FROM OPINIONS;
 
