@@ -1037,7 +1037,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/opinions/like/3",
+					"raw": "http://localhost:4000/opinions/likes/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1045,7 +1045,7 @@
 					"port": "4000",
 					"path": [
 						"opinions",
-						"like",
+						"likes",
 						"3"
 					]
 				}
@@ -1118,7 +1118,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/opinions/dislike/6",
+					"raw": "http://localhost:4000/opinions/dislikes/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1126,7 +1126,7 @@
 					"port": "4000",
 					"path": [
 						"opinions",
-						"dislike",
+						"dislikes",
 						"6"
 					]
 				}
