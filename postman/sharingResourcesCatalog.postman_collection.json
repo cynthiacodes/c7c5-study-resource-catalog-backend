@@ -1,0 +1,1197 @@
+{
+	"info": {
+		"_postman_id": "0177b694-8b9c-482c-80b8-0bdd1f4577cb",
+		"name": "sharingResourcesCatalog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29414702"
+	},
+	"item": [
+		{
+			"name": "users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "users",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "878"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"36e-eryrriZ3iOb18FVjAx9kCBt3FWk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 12 Sep 2023 15:04:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"user_id\": 1,\n        \"name\": \"Adil\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 2,\n        \"name\": \"Ana\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 3,\n        \"name\": \"Beth\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 4,\n        \"name\": \"Carlton\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 5,\n        \"name\": \"Cynthia\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 6,\n        \"name\": \"Dani\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 7,\n        \"name\": \"Henry\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 8,\n        \"name\": \"HoKei\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 9,\n        \"name\": \"Julieta\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 10,\n        \"name\": \"Laura\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 11,\n        \"name\": \"Lucja\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 12,\n        \"name\": \"Oskar\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 13,\n        \"name\": \"Rosie\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 14,\n        \"name\": \"Silviu\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 15,\n        \"name\": \"Stephanie\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 16,\n        \"name\": \"Tom\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 17,\n        \"name\": \"Tomasz\",\n        \"is_faculty\": false\n    },\n    {\n        \"user_id\": 18,\n        \"name\": \"Viki\",\n        \"is_faculty\": false\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "resources",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/resources",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"resources"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "resources",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/resources",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"resources"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "872"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"368-xrQXSjpkPudFXNhMPoHz3sBqnAA\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 12 Sep 2023 14:25:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"resources_id\": 1,\n        \"resource_name\": \"Introduction to React\",\n        \"author_name\": \"John Doe\",\n        \"url\": \"https://example.com/react_intro\",\n        \"description\": \"A beginner-friendly introduction to React\",\n        \"tags\": \"React, Frontend, Web Development\",\n        \"content_type\": \"Course\",\n        \"recommended_stage\": \"React Week 1\",\n        \"date_created\": \"2023-09-10T09:00:00.000Z\",\n        \"user_id\": 1,\n        \"creator_opinion\": \"I recommend this resource after having used it\",\n        \"creator_reason\": \"Clear and concise content\"\n    },\n    {\n        \"resources_id\": 2,\n        \"resource_name\": \"Introduction to React\",\n        \"author_name\": \"John Doe\",\n        \"url\": \"https://example.com/react_intro\",\n        \"description\": \"A beginner-friendly introduction to React\",\n        \"tags\": \"React\",\n        \"content_type\": \"Course\",\n        \"recommended_stage\": \"React Week 1\",\n        \"date_created\": \"2023-09-10T09:00:00.000Z\",\n        \"user_id\": 1,\n        \"creator_opinion\": \"I recommend this resource after having used it\",\n        \"creator_reason\": \"Clear and concise content\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Post Resource",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"resource_name\": \"TypeScript Basics\",\n  \"author_name\": \"Sarah Johnson\",\n  \"url\": \"https://example.com/typescript-basics\",\n  \"description\": \"A beginner's guide to TypeScript, covering the fundamentals.\",\n  \"tags\": \"TypeScript\",\n  \"content_type\": \"Article\",\n  \"recommended_stage\": \"Foundation Week 0 - 3\",\n  \"user_id\": 1,\n  \"creator_opinion\": \"I recommend this resource after having used it\",\n  \"creator_reason\": \"The article simplifies TypeScript concepts and is great for newcomers to the language.\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/resources",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"resources"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post Resource",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resource_name\": \"TypeScript Basics\",\n  \"author_name\": \"Sarah Johnson\",\n  \"url\": \"https://example.com/typescript-basics\",\n  \"description\": \"A beginner's guide to TypeScript, covering the fundamentals.\",\n  \"tags\": \"TypeScript\",\n  \"content_type\": \"Article\",\n  \"recommended_stage\": \"Foundation Week 0 - 3\",\n  \"user_id\": 1,\n  \"creator_opinion\": \"I recommend this resource after having used it\",\n  \"creator_reason\": \"The article simplifies TypeScript concepts and is great for newcomers to the language.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/resources",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"resources"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "522"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"20a-mPe86OAXUVHaxv3it4Y6bOR7sMc\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 15 Sep 2023 10:40:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"resource_id\": 8,\n    \"resource_name\": \"TypeScript Basics\",\n    \"author_name\": \"Sarah Johnson\",\n    \"url\": \"https://example.com/typescript-basics\",\n    \"description\": \"A beginner's guide to TypeScript, covering the fundamentals.\",\n    \"tags\": \"TypeScript\",\n    \"content_type\": \"Article\",\n    \"recommended_stage\": \"Foundation Week 0 - 3\",\n    \"date_created\": \"2023-09-15T10:40:29.568Z\",\n    \"user_id\": 1,\n    \"creator_opinion\": \"I recommend this resource after having used it\",\n    \"creator_reason\": \"The article simplifies TypeScript concepts and is great for newcomers to the language.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete resource",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/resources/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"resources",
+						"12"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete resource",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/resources/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"resources",
+								"12"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "30"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1e-itBtpwOhBmyookN8POCLf8HEyXg\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 15 Sep 2023 12:30:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "\"resource 12 has been deleted\""
+				}
+			]
+		},
+		{
+			"name": "Get opinions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/opinions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"opinions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get opinions",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/opinions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"opinions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "265"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"109-tDLrpzWXYVu4eA4dB9QI9w9IhJ8\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 15 Sep 2023 12:32:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"opinion_id\": 1,\n        \"user_id\": 4,\n        \"resource_id\": 1,\n        \"comment\": \"Amazing!\",\n        \"likes\": 0,\n        \"dislikes\": 0,\n        \"date\": \"2023-09-15T09:29:24.202Z\"\n    },\n    {\n        \"opinion_id\": 2,\n        \"user_id\": 4,\n        \"resource_id\": 1,\n        \"comment\": \"This is a great resource!\",\n        \"likes\": 15,\n        \"dislikes\": 2,\n        \"date\": \"2023-09-15T09:29:24.202Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Post opinion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_id\": 5,\n  \"resource_id\": 8,\n  \"comment\": \"This resource is incredibly helpful for learning TypeScript. I highly recommend it!\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/opinions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"opinions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post opinion",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": 5,\n  \"resource_id\": 8,\n  \"comment\": \"This resource is incredibly helpful for learning TypeScript. I highly recommend it!\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/opinions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"opinions"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "211"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d3-zP+2P6CFx9vJY6R/DsGScy5Y/ho\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 15 Sep 2023 15:09:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"opinion_id\": 4,\n        \"user_id\": 5,\n        \"resource_id\": 8,\n        \"comment\": \"This resource is incredibly helpful for learning TypeScript. I highly recommend it!\",\n        \"is_like\": false,\n        \"is_dislike\": false,\n        \"date\": \"2023-09-15T15:09:36.320Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Post to-study",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_id\": 5,\n  \"resource_id\": 8\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/to-study",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"to-study"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post to-study",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": 5,\n  \"resource_id\": 8\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/to-study",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"to-study"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "47"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2f-utI1vXBU49aMX7WmitT7SG9wuuc\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 15 Sep 2023 13:07:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"study_item_id\": 2,\n    \"user_id\": 5,\n    \"resource_id\": 8\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete One Resource From To-Study ",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/to-study",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"to-study"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete One Resource From To-Study",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/to-study/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"to-study",
+								"1"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1f-U21Oe+kEwgFsRXeWWfrozSvrLr8\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 15 Sep 2023 15:15:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "\"study item 1 has been deleted\""
+				}
+			]
+		},
+		{
+			"name": "Get to-study by user id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/to-study/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"to-study",
+						"6"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "to-study by user id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/to-study/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"to-study",
+								"6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"31-MZHBQp76n8gvdY7auTwjukvKJf8\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Sep 2023 09:29:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"study_item_id\": 1,\n        \"user_id\": 6,\n        \"resource_id\": 1\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get resource by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/resources/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"resources",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get resource by id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/resources/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"resources",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "422"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1a6-SISva8jgAoU4rMJMmQeSZbKwbTo\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Sep 2023 10:20:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"resource_id\": 1,\n        \"resource_name\": \"Introduction to React\",\n        \"author_name\": \"John Doe\",\n        \"url\": \"https://example.com/react_intro\",\n        \"description\": \"A beginner-friendly introduction to React\",\n        \"tags\": \"React\",\n        \"content_type\": \"Course\",\n        \"recommended_stage\": \"React Week 1\",\n        \"date_created\": \"2023-09-18T09:18:55.149Z\",\n        \"user_id\": 1,\n        \"creator_opinion\": \"I recommend this resource after having used it\",\n        \"creator_reason\": \"Clear and concise content\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Put like (opinion table)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_id\": 4,\n  \"resource_id\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/opinions/like",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"opinions",
+						"like"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Put like (opinion table)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": 4,\n  \"resource_id\": 1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/opinions/like",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"opinions",
+								"like"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "135"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"87-apKmux7sxJrLDIzkPbRsfDdq9Ys\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Sep 2023 14:02:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"opinion_id\": 1,\n        \"user_id\": 4,\n        \"resource_id\": 1,\n        \"comment\": \"Amazing!\",\n        \"is_like\": true,\n        \"is_dislike\": false,\n        \"date\": \"2023-09-18T13:31:21.138Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Put dislike (opinion table)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_id\": 5,\n  \"resource_id\": 6\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/opinions/dislike",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"opinions",
+						"dislike"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Put dislike (opinion table)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": 5,\n  \"resource_id\": 6\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/opinions/dislike",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"opinions",
+								"dislike"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "145"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"91-bJ7B21oWipYxMovLTKdCUUlTihI\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Sep 2023 14:08:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"opinion_id\": 3,\n        \"user_id\": 5,\n        \"resource_id\": 6,\n        \"comment\": \"Too time consuming\",\n        \"is_like\": false,\n        \"is_dislike\": true,\n        \"date\": \"2023-09-18T13:31:21.138Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get total likes for resource",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/opinions/like/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"opinions",
+						"like",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get total likes for a resource",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/opinions/like/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"opinions",
+								"like",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "15"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f-Cag3WhCWEHYuP2oAmLDhzo1L8yQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Sep 2023 14:37:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"count\": \"2\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Total dislikes for a resource",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/opinions/dislike/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"opinions",
+						"dislike",
+						"6"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "total dislike for a resource",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/opinions/dislike/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"opinions",
+								"dislike",
+								"6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "15"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f-Cag3WhCWEHYuP2oAmLDhzo1L8yQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Sep 2023 14:39:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"count\": \"2\"\n    }\n]"
+				}
+			]
+		}
+	]
+}

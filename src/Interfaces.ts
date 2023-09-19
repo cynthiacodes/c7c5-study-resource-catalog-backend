@@ -19,5 +19,8 @@ export interface Study {
 export interface Opinion {
     user_id: number;
     resource_id: number;
+}
+
+export interface OpinionWithComment extends Opinion {
     comment: string;
 }

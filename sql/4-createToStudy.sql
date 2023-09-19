@@ -1,3 +1,4 @@
+
 DROP TABLE
   IF EXISTS TO_STUDY;
 
@@ -11,7 +12,9 @@ CREATE TABLE
 INSERT INTO
   TO_STUDY (user_id, resource_id)
 VALUES
-  (6, 1);
+  (6, 1),
+  (1,1),
+  (3,8);
   
 SELECT * FROM TO_STUDY;
 
@@ -30,3 +33,13 @@ SELECT
 FROM
   TO_STUDY
   INNER JOIN RESOURCES ON TO_STUDY.resource_id = RESOURCES.resource_id;
+
+
+SELECT * FROM TO_STUDY WHERE user_id = 6;
+
+
+
+
+
+
+

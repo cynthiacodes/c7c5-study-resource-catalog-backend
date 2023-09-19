@@ -4,7 +4,8 @@ import express from "express";
 import { Client } from "pg";
 import { getEnvVarOrFail } from "./support/envVarUtils";
 import { setupDBClientConfig } from "./support/setupDBClientConfig";
-import { Opinion, Resource, Study } from "./Interfaces";
+import { Opinion, OpinionWithComment, Resource, Study } from "./Interfaces";
+import morgan from "morgan";
 
 dotenv.config(); //Read .env file lines as though they were env vars.
 
@@ -14,6 +15,7 @@ const client = new Client(dbClientConfig);
 //Configure express routes
 const app = express();
 
+app.use(morgan("combined"));
 app.use(express.json()); //add JSON body parser to each following route handler
 app.use(cors()); //add CORS support to each following route handler
 
@@ -34,6 +36,18 @@ app.get("/users", async (_req, res) => {
 app.get("/resources", async (_req, res) => {
     try {
         const response = await client.query("SELECT * FROM RESOURCES");
+        res.status(200).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+app.get<{ id: string }>("/resources/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const query = "SELECT * FROM RESOURCES WHERE resource_id = $1";
+        const values = [id];
+        const response = await client.query(query, values);
         res.status(200).json(response.rows);
     } catch (error) {
         console.error(error);
@@ -100,7 +114,41 @@ app.get("/opinions", async (_req, res) => {
     }
 });
 
-app.post<{}, {}, Opinion>("/opinions", async (req, res) => {
+app.get<{ resourceId: string }>(
+    "/opinions/likes/:resourceId",
+    async (req, res) => {
+        try {
+            const resourceId = req.params.resourceId;
+            const query =
+                "SELECT COUNT(*) FROM OPINIONS WHERE resource_id = $1 AND is_like = true";
+            const values = [resourceId];
+            const response = await client.query(query, values);
+            res.status(200).json(response.rows);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("An error occurred. Check server logs.");
+        }
+    }
+);
+
+app.get<{ resourceId: string }>(
+    "/opinions/dislikes/:resourceId",
+    async (req, res) => {
+        try {
+            const resourceId = req.params.resourceId;
+            const query =
+                "SELECT COUNT(*) FROM OPINIONS WHERE resource_id = $1 AND is_dislike = true";
+            const values = [resourceId];
+            const response = await client.query(query, values);
+            res.status(200).json(response.rows);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("An error occurred. Check server logs.");
+        }
+    }
+);
+
+app.post<{}, {}, OpinionWithComment>("/opinions", async (req, res) => {
     try {
         const { user_id, resource_id, comment } = req.body;
         const insertQuery =
@@ -115,6 +163,45 @@ app.post<{}, {}, Opinion>("/opinions", async (req, res) => {
     }
 });
 
+app.put<{}, {}, Opinion>("/opinions/like", async (req, res) => {
+    try {
+        const { user_id, resource_id } = req.body;
+        const updateQuery =
+            "UPDATE OPINIONS SET is_dislike = CASE WHEN is_dislike THEN false ELSE is_dislike END, is_like = NOT is_like WHERE user_id = $1 AND resource_id = $2 RETURNING * ";
+        const values = [user_id, resource_id];
+        const response = await client.query(updateQuery, values);
+        res.status(201).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
+app.put<{}, {}, Opinion>("/opinions/dislike", async (req, res) => {
+    try {
+        const { user_id, resource_id } = req.body;
+        const updateQuery =
+            "UPDATE OPINIONS SET is_like = CASE WHEN is_like THEN false ELSE is_like END, is_dislike = NOT is_dislike WHERE user_id = $1 AND resource_id = $2 RETURNING * ";
+        const values = [user_id, resource_id];
+        const response = await client.query(updateQuery, values);
+        res.status(201).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+app.get<{ id: string }>("/to-study/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const query = "SELECT * FROM TO_STUDY WHERE user_id = $1";
+        const values = [id];
+        const response = await client.query(query, values);
+        res.status(200).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
 app.post<{}, {}, Study>("/to-study", async (req, res) => {
     try {
         const { user_id, resource_id } = req.body;
