@@ -115,7 +115,7 @@ app.get("/opinions", async (_req, res) => {
 });
 
 app.get<{ resourceId: string }>(
-    "/opinions/like/:resourceId",
+    "/opinions/likes/:resourceId",
     async (req, res) => {
         try {
             const resourceId = req.params.resourceId;
@@ -132,7 +132,7 @@ app.get<{ resourceId: string }>(
 );
 
 app.get<{ resourceId: string }>(
-    "/opinions/dislike/:resourceId",
+    "/opinions/dislikes/:resourceId",
     async (req, res) => {
         try {
             const resourceId = req.params.resourceId;
