@@ -35,7 +35,9 @@ app.get("/users", async (_req, res) => {
 
 app.get("/resources", async (_req, res) => {
     try {
-        const response = await client.query("SELECT * FROM RESOURCES");
+        const response = await client.query(
+            "SELECT * FROM RESOURCES ORDER BY resource_id DESC;"
+        );
         res.status(200).json(response.rows);
     } catch (error) {
         console.error(error);
