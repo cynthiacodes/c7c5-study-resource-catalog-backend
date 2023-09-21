@@ -11,6 +11,8 @@ CREATE TABLE OPINIONS (
   	CHECK (NOT (is_like AND is_dislike))
 );
 
+ALTER TABLE OPINIONS ADD CONSTRAINT unique_opinion UNIQUE (user_id, resource_id);
+
 INSERT INTO OPINIONS (user_id, resource_id, comment)
 VALUES
     (4, 1, 'Amazing!');
@@ -21,8 +23,7 @@ VALUES
     (4, 3, 'This is a great resource!', true, false),
     (5, 6, 'Too time consuming', false, true),
     (1, 8, 'straight to the point', true, false),
-    (1, 3, 'Worth reading', true, false),
-    (5, 6, 'Not great', false, true);
+    (1, 3, 'Worth reading', true, false);
     
 
 SELECT * FROM OPINIONS;
@@ -75,4 +76,37 @@ WHERE
       user_id = 7
       AND resource_id = 3
   );
+  
+  -- -- updated query to like resource (updated on :21Sept2023 version2)
+  WITH
+  upsert AS (
+    UPDATE
+      opinions
+    SET
+      is_dislike = CASE
+        WHEN is_dislike THEN false
+        ELSE is_dislike
+      END,
+      is_like = NOT is_like
+    WHERE
+      user_id = 7
+      AND resource_id = 3
+    RETURNING *
+  )
+INSERT INTO
+  opinions (user_id, resource_id, is_like, is_dislike)
+SELECT
+  7,
+  3,
+  true,
+  false
+WHERE
+  NOT EXISTS (
+    SELECT
+      1
+    FROM
+      upsert
+  ) ON CONFLICT (user_id, resource_id)
+DO
+  NOTHING;
   

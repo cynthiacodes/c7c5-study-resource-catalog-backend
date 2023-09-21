@@ -169,7 +169,7 @@ app.put<{}, {}, Opinion>("/opinions/like", async (req, res) => {
     try {
         const { user_id, resource_id, is_like, is_dislike } = req.body;
         const updateQuery =
-            " UPDATE opinions SET is_dislike = CASE WHEN is_dislike THEN false ELSE is_dislike END, is_like = NOT is_like WHERE user_id = $1 AND resource_id = $2; INSERT INTO opinions (user_id, resource_id,is_like, is_dislike) SELECT $1, $2, $3, $4 WHERE NOT EXISTS (SELECT 1 FROM opinions WHERE user_id = $1 AND resource_id = $2)RETURNING *;";
+            " WITH upsert AS (UPDATE opinions SET is_dislike = CASE WHEN is_dislike THEN false ELSE is_dislike END, is_like = NOT is_like WHERE user_id = $1 AND resource_id = $2 RETURNING *) INSERT INTO opinions (user_id, resource_id, is_like, is_dislike) SELECT $1, $2, $3, $4 WHERE NOT EXISTS (SELECT 1 FROM upsert) ON CONFLICT (user_id, resource_id) DO NOTHING RETURNING *;";
         const values = [user_id, resource_id, is_like, is_dislike];
         const response = await client.query(updateQuery, values);
         res.status(201).json(response.rows);
