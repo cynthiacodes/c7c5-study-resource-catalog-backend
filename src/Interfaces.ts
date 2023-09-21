@@ -19,6 +19,8 @@ export interface Study {
 export interface Opinion {
     user_id: number;
     resource_id: number;
+    is_like: boolean;
+    is_dislike: boolean;
 }
 
 export interface OpinionWithComment extends Opinion {

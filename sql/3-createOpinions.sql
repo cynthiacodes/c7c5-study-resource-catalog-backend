@@ -4,7 +4,7 @@ CREATE TABLE OPINIONS (
     opinion_id SERIAL PRIMARY KEY NOT NULL,
     user_id INT REFERENCES USERS(user_id),
     resource_id INT REFERENCES RESOURCES(resource_id),
-    comment TEXT NOT NULL,
+    comment TEXT DEFAULT NULL,
     is_like BOOLEAN DEFAULT false,
     is_dislike BOOLEAN DEFAULT false,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -41,3 +41,38 @@ SET
   is_dislike = CASE WHEN is_dislike THEN false ELSE is_dislike END,
   is_like = NOT is_like
 WHERE user_id = 4 AND resource_id = 1;
+
+
+-- updated query to like resource (updated on :21Sept2023)
+
+
+UPDATE
+  opinions
+SET
+  is_dislike = CASE
+    WHEN is_dislike THEN false
+    ELSE is_dislike
+  END,
+  is_like = NOT is_like
+WHERE
+  user_id = 7
+  AND resource_id = 3;
+
+INSERT INTO
+  opinions (user_id, resource_id,is_like, is_dislike)
+SELECT
+  7,
+  3,
+  true,
+  false
+WHERE
+  NOT EXISTS (
+    SELECT
+      1
+    FROM
+      opinions
+    WHERE
+      user_id = 7
+      AND resource_id = 3
+  );
+  
