@@ -36,6 +36,8 @@ FROM
 WHERE
   TO_STUDY.user_id = 8
 
+DELETE FROM TO_STUDY WHERE resource_id = 20 AND user_id = 8;
+
 
 SELECT * FROM TO_STUDY WHERE user_id = 6;
 

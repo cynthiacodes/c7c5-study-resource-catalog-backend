@@ -219,18 +219,25 @@ app.post<{}, {}, Study>("/to-study", async (req, res) => {
     }
 });
 
-app.delete<{ id: string }>("/to-study/:id", async (req, res) => {
-    try {
-        const id = req.params.id;
-        const deleteQuery = "DELETE FROM TO_STUDY WHERE study_item_id = $1";
-        const values = [id];
-        await client.query(deleteQuery, values);
-        res.status(201).json(`study item ${id} has been deleted`);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("An error occurred. Check server logs.");
+app.delete<{ userId: string; resourceId: string }>(
+    "/to-study/:userId/:resourceId",
+    async (req, res) => {
+        try {
+            const userId = req.params.userId;
+            const resourceId = req.params.resourceId;
+            const deleteQuery =
+                "DELETE FROM TO_STUDY WHERE user_id = $1 and resource_id =$2";
+            const values = [userId, resourceId];
+            await client.query(deleteQuery, values);
+            res.status(201).json(
+                `study item ${resourceId} has been deleted for user ${userId}`
+            );
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("An error occurred. Check server logs.");
+        }
     }
-});
+);
 
 app.get("/health-check", async (_req, res) => {
     try {
