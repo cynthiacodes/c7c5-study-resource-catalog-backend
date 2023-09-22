@@ -195,7 +195,8 @@ app.put<{}, {}, Opinion>("/opinions/dislike", async (req, res) => {
 app.get<{ id: string }>("/to-study/:id", async (req, res) => {
     try {
         const id = req.params.id;
-        const query = "SELECT * FROM TO_STUDY WHERE user_id = $1";
+        const query =
+            "SELECT TO_STUDY.*, RESOURCES.* FROM TO_STUDY INNER JOIN RESOURCES ON TO_STUDY.resource_id = RESOURCES.resource_id WHERE TO_STUDY.user_id = $1;";
         const values = [id];
         const response = await client.query(query, values);
         res.status(200).json(response.rows);

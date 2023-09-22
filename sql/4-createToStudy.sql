@@ -32,7 +32,9 @@ SELECT
   RESOURCES.*
 FROM
   TO_STUDY
-  INNER JOIN RESOURCES ON TO_STUDY.resource_id = RESOURCES.resource_id;
+  INNER JOIN RESOURCES ON TO_STUDY.resource_id = RESOURCES.resource_id
+WHERE
+  TO_STUDY.user_id = 8
 
 
 SELECT * FROM TO_STUDY WHERE user_id = 6;
