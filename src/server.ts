@@ -154,7 +154,7 @@ app.post<{}, {}, OpinionWithComment>("/opinions", async (req, res) => {
     try {
         const { user_id, resource_id, comment } = req.body;
         const insertQuery =
-            "INSERT INTO OPINIONS(user_id, resource_id, comment) VALUES ($1, $2, $3) RETURNING * ";
+            "INSERT INTO COMMENTS(user_id, resource_id, comment) VALUES ($1, $2, $3) RETURNING * ";
         const values = [user_id, resource_id, comment];
         const response = await client.query(insertQuery, values);
 
@@ -167,10 +167,10 @@ app.post<{}, {}, OpinionWithComment>("/opinions", async (req, res) => {
 
 app.put<{}, {}, Opinion>("/opinions/like", async (req, res) => {
     try {
-        const { user_id, resource_id } = req.body;
+        const { user_id, resource_id, is_like, is_dislike } = req.body;
         const updateQuery =
-            "UPDATE OPINIONS SET is_dislike = CASE WHEN is_dislike THEN false ELSE is_dislike END, is_like = NOT is_like WHERE user_id = $1 AND resource_id = $2 RETURNING * ";
-        const values = [user_id, resource_id];
+            "INSERT INTO OPINIONS (user_id, resource_id, is_like, is_dislike) VALUES ($1, $2, $3, $4) ON CONFLICT (user_id, resource_id)DO UPDATE SET is_dislike = CASE  WHEN EXCLUDED.is_dislike THEN FALSE ELSE false END,is_like = CASE WHEN EXCLUDED.is_dislike THEN OPINIONS.is_like ELSE NOT OPINIONS.is_like END RETURNING *";
+        const values = [user_id, resource_id, is_like, is_dislike];
         const response = await client.query(updateQuery, values);
         res.status(201).json(response.rows);
     } catch (error) {
@@ -181,10 +181,10 @@ app.put<{}, {}, Opinion>("/opinions/like", async (req, res) => {
 
 app.put<{}, {}, Opinion>("/opinions/dislike", async (req, res) => {
     try {
-        const { user_id, resource_id } = req.body;
+        const { user_id, resource_id, is_like, is_dislike } = req.body;
         const updateQuery =
-            "UPDATE OPINIONS SET is_like = CASE WHEN is_like THEN false ELSE is_like END, is_dislike = NOT is_dislike WHERE user_id = $1 AND resource_id = $2 RETURNING * ";
-        const values = [user_id, resource_id];
+            "INSERT INTO OPINIONS (user_id, resource_id, is_like, is_dislike) VALUES ($1, $2, $3, $4) ON CONFLICT (user_id, resource_id) DO UPDATE SET is_like = CASE WHEN EXCLUDED.is_dislike THEN FALSE ELSE NOT OPINIONS.is_like END,is_dislike = CASE WHEN EXCLUDED.is_dislike THEN NOT OPINIONS.is_dislike ELSE EXCLUDED.is_dislike END RETURNING *";
+        const values = [user_id, resource_id, is_like, is_dislike];
         const response = await client.query(updateQuery, values);
         res.status(201).json(response.rows);
     } catch (error) {
