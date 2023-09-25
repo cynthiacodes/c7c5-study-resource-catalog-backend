@@ -1,12 +1,6 @@
-# mark-fullstack-proj--starter-1
+# Study Resource Catalog Backend
 
-## Usage:
-
-Instead of cloning this project, click "Use this template". This will allow you to create a repo on github which has this project's content but which is not a fork of it.
-
-Make sure you create the repo as being owned by your own account not by the WeAreAcademy organisation.
-
-## Install
+## Install Dependencies
 
 `yarn`
 
@@ -23,6 +17,16 @@ PORT=4000
 ```
 
 You will need to create your own databases for this project - certainly one remotely and ideally one locally, too, for development and testing.
+
+Run the following SQL scripts to create the tables. Located in the following directory `sql`
+
+```
+1-createUsers.sql
+2-createResources.sql
+3-createOpinions.sql
+4-createToStudy.sql
+5-createComments.sql
+```
 
 Hosts for postgres with a free offering include:
 
